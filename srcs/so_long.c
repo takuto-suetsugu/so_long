@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/05 17:01:18 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/05 17:07:36 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,28 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+void    print_map(void *mlx, t_data img)
+{
+    int map;
+    int map[15][20] = {
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+    {1,0,0,0,0,0,C,C,C,C,C,C,C,1,0,0,0,0,0,1},
+    {1,0,0,0,0,0,C,C,C,C,C,C,C,1,0,0,0,0,0,1},
+    {1,0,0,1,1,0,0,1,1,1,0,0,0,1,1,0,0,0,0,1},
+    {1,C,C,0,1,0,C,C,C,1,C,C,C,0,0,0,0,C,C,1},
+    {1,C,C,0,1,0,C,C,C,1,C,C,C,0,0,0,0,C,C,1},
+    {1,C,C,0,0,0,C,C,C,0,C,C,C,0,0,0,0,C,C,1},
+    {1,C,C,0,0,0,1,1,1,1,1,1,1,1,0,0,0,C,C,1},
+    {1,C,C,0,0,0,C,C,C,0,C,C,C,0,0,0,0,C,C,1},
+    {1,C,C,0,0,0,C,C,C,1,C,C,C,0,1,0,0,C,C,1},
+    {1,C,C,0,0,0,C,C,C,1,C,C,C,0,1,0,0,C,C,1},
+    {1,0,0,0,1,1,0,0,0,1,1,1,0,0,1,1,0,C,C,1},
+    {1,0,0,0,0,1,C,C,C,C,C,C,C,0,0,0,0,0,0,1},
+    {1,0,0,0,0,1,C,C,C,C,C,C,C,0,0,0,0,0,0,1},
+    {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+    };
+}
+
 int	main(void)
 {	void	*mlx;
 	void	*mlx_win;
@@ -40,7 +62,7 @@ int	main(void)
 	img.img = mlx_new_image(mlx, 1600, 800);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);
-
+    print_map(mlx, &img);
     int i=0;
     int j=0;
     while (i++ < 300)
