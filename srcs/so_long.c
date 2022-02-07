@@ -6,14 +6,16 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/07 12:10:45 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/07 16:32:29 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/so_long.h"
 
 typedef struct	s_data {
-	void	*img;
+	void	*wall_img;
+	void	*floor_img;
+	void	*coin_img;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -30,6 +32,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void    print_map(t_data *img, void *mlx)
 {
+/* 	char	*wall_path = "images/wall.xpm";
+	char	*floor_path = "images/floor.xpm";
+	char	*coin_path = "images/coin.xpm"; */
+	int		img_width;
+	int		img_height;
 	
 	int map[15][20] = {
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
@@ -49,10 +56,9 @@ void    print_map(t_data *img, void *mlx)
 	{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 	};
 
-	char	*relative_path = "images/chip.bmp";
-	int		img_width;
-	int		img_height;
-	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
+	img->wall_img = mlx_xpm_file_to_image(mlx, "images/wall.xpm", &img_width, &img_height);
+	img->floor_img = mlx_xpm_file_to_image(mlx, "images/floor.xpm", &img_width, &img_height);
+	img->coin_img = mlx_xpm_file_to_image(mlx, "images/coin.xpm", &img_width, &img_height);
 	
 	int i=0;
 	int j=0;
@@ -94,7 +100,7 @@ void    print_map(t_data *img, void *mlx)
 	} 
 	*/
 }
-/* 
+
 int	main(void)
 {	void	*mlx;
 	void	*mlx_win;
@@ -103,38 +109,18 @@ int	main(void)
 	mlx = mlx_init();
 	if (mlx == NULL)
 		return 0;
-	mlx_win = mlx_new_window(mlx, 1000, 800, "so_long");
-	img.img = mlx_new_image(mlx, 1000, 800);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+	mlx_win = mlx_new_window(mlx, 2000, 1600, "so_long");
+	img.wall_img = mlx_new_image(mlx, 2000, 1600);
+	img.addr = mlx_get_data_addr(img.wall_img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);	
 
-
-	char	*relative_path = "../images/chip.xpm";
-	int		img_width;
-	int		img_height;
-	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-
-
-	//print_map(&img, mlx);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
+	print_map(&img, mlx);
+	int	i = 0;
+	while(i < 1000)
+	{
+		mlx_put_image_to_window(mlx, mlx_win, img.wall_img, i, 0);
+		i += 300;
+	}
 	mlx_loop(mlx);
 	return 0;
-}
- */
-
-int main()
-{
-		void *mlx;
-		void *win;
-		void *img;
-
-		int		img_width;
-		int 	img_height;
-
-		mlx = mlx_init();
-		win = mlx_new_window(mlx, 500, 500, "my_mlx");
-		img = mlx_xpm_file_to_image(mlx, "../images/chip.xpm", &img_width, &img_height);
-		mlx_put_image_to_window(mlx, win, img, 50, 50);
-		mlx_loop(mlx);
-		return (0);
 }

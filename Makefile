@@ -6,7 +6,7 @@
 #    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 14:06:28 by tsuetsug          #+#    #+#              #
-#    Updated: 2022/02/05 15:11:42 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/02/07 14:30:26 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ $(NAME):
 
 	@echo "$(BWHITE)Compiling push_swap...$(OFF)"
 	@$(CC) $(CC_FLAGS) -c $(SRCS) -I$(HEADERS)
-	@$(CC) -o $(NAME) $(OBJ) $(LIBFT) $(CC_FLAGS) $(MLB_FLAGS)
+	@$(CC) -g -o $(NAME) $(OBJ) $(LIBFT) $(CC_FLAGS) $(MLB_FLAGS)
 	@echo "$(BGREEN)push_swap build completed.$(OFF)"
 	
 clean:
