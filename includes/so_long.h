@@ -5,6 +5,7 @@
 # include	<stdlib.h>
 # include	<stdio.h>
 # include   <errno.h>
+#include    <fcntl.h>
 
 # include "../libft/libft.h"
 # include "../minilibx_mms_20200219/mlx.h"
