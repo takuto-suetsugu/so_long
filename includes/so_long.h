@@ -37,5 +37,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	read_file(char *argv, t_map *map);
 void	import_map(t_map *map);
 void	sizeof_file(t_map *map);
+void	check_file_name(char *argv);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/14 18:15:01 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/14 18:48:28 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,14 @@ int	main(int argc, char **argv)
 	t_map	map;
 
 	mlx = mlx_init();
-	if (mlx == NULL || argc < 2)
-		return (0);
+	if (mlx == NULL || argc != 2)
+		ft_error("mlx or argv is not valid");
 	mlx_win = mlx_new_window(mlx, 2200, 400, "so_long");
 	img.astronaut = mlx_new_image(mlx, 400, 1000);
 	img.addr = mlx_get_data_addr(img.astronaut, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 	download_images(mlx, &img);
+	check_file_name(argv[1]);
 	read_file(argv[1], &map);
 	sizeof_file(&map);
 	import_map(&map);
