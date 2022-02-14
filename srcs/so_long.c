@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/14 16:23:35 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:34:43 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	*read_file()
 	return (str);
 }
 
-t_map	*import_map(t_map	*map)
+t_map	*import_map(t_map *map)
 {
 	char	*buff;
 	int		i;
@@ -108,8 +108,6 @@ t_map	*import_map(t_map	*map)
 			j++;
 			k++;
 		}
-		map->content[i][j] = '\0';
-		printf("%s\n", map->content[i]);
 		i++;
 		j = 0;
 		k++;
