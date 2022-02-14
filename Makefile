@@ -6,14 +6,14 @@
 #    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 14:06:28 by tsuetsug          #+#    #+#              #
-#    Updated: 2022/02/14 11:20:49 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/02/14 17:37:29 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	= so_long
 
-SRCS	= srcs/so_long.c
+SRCS	= srcs/so_long.c srcs/ft_mlx.c srcs/get_file.c srcs/so_long_utils.c
 
 OBJ		= *.o
 
@@ -37,10 +37,10 @@ $(NAME):
 	${MAKE} -C libft
 	@echo "$(BGREEN)Libraries done.$(OFF)"
 
-	@echo "$(BWHITE)Compiling push_swap...$(OFF)"
+	@echo "$(BWHITE)Compiling so_long...$(OFF)"
 	$(CC) $(CC_FLAGS) -c $(SRCS) -I $(HEADERS)
 	$(CC) -g -o $(NAME) $(OBJ) $(LIBFT) $(CC_FLAGS) $(MLB_FLAGS)
-	@echo "$(BGREEN)push_swap build completed.$(OFF)"
+	@echo "$(BGREEN)so_long build completed.$(OFF)"
 	
 clean:
 	@echo "$(BWHITE)Removing object-files...$(OFF)"

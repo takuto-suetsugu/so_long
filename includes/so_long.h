@@ -9,6 +9,33 @@
 
 # include "../libft/libft.h"
 # include "../minilibx_mms_20200219/mlx.h"
-int main(void);
+
+typedef struct s_data {
+	void	*astronaut;
+	void	*background;
+	void	*planet;
+	void	*earth;
+	void	*blackhole;
+	int		width;
+	int		height;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
+typedef struct s_map {
+	char	*str;
+	char	**content;
+	int		col;
+	int		row;
+}				t_map;
+
+void	ft_error(char *error_message);
+void	download_images(void *mlx, t_data *img);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	read_file(char *argv, t_map *map);
+void	import_map(t_map *map);
+void	sizeof_file(t_map *map);
 
 #endif
