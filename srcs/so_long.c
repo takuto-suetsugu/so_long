@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/14 16:01:48 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:23:35 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct	s_data {
 
 typedef struct	s_map {
 	char	**content;
-	int		col=6;
-	int		row=34;
+	int		col;
+	int		row;
 }				t_map;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -80,34 +80,36 @@ char	*read_file()
 	return (str);
 }
 
-char	**import_map(t_map	*map)
+t_map	*import_map(t_map	*map)
 {
 	char	*buff;
 	int		i;
 	int		j;
 	int		k;
 	
+	map->col = 34;
+	map->row = 6;
 	buff = read_file();
-	map.content = malloc(ft_strlen(map->row)) + 1);
-	if (!map.content)
+	map->content = malloc(sizeof(char*) *(map->row));
+	if (!map->content)
 	{
 		printf("Memory allocation error\n");
-		return(NULL);
+		return (0);
 	}
 	i = 0;
 	j = 0;
 	k = 0;
 	while (i < map->row)
 	{
-		map[i] = malloc(sizeof(buff));
+		map->content[i] = malloc(sizeof(char) * map->col);
 		while(j < map->col)
 		{
-			map[i][j] = buff[k];
+			map->content[i][j] = buff[k];
 			j++;
 			k++;
 		}
-		map[i][j] = '\0';
-		printf("%s\n", map[i]);
+		map->content[i][j] = '\0';
+		printf("%s\n", map->content[i]);
 		i++;
 		j = 0;
 		k++;
@@ -115,30 +117,30 @@ char	**import_map(t_map	*map)
 	return (map);
 }
 
-void    print_map(char **map, t_data *img, void *mlx, void *mlx_win)
+void    print_map(t_map	*map, t_data *img, void *mlx, void *mlx_win)
 {
 	int x;
 	int y;
 
 	x = 0;
 	y = 0;
-	while ((map[y][x]))
+	while (y < map->row)
 	{
-		while (map[y][x])
+		while (x < map->col)
 		{
-			if (map[y][x] == 0)
+			if (map->content[y][x] == '0')
 				mlx_put_image_to_window(mlx, mlx_win, img->background_img, x*img->img_width, y*img->img_height);
-			else if (map[y][x] == 1)
+			else if (map->content[y][x] == '1')
 				mlx_put_image_to_window(mlx, mlx_win, img->blackhole_img, x*img->img_width, y*img->img_height);
-			else if (map[y][x] == 'C')
+			else if (map->content[y][x] == 'C')
 				mlx_put_image_to_window(mlx, mlx_win, img->planet_img, x*img->img_width, y*img->img_height);
-			else if (map[y][x] == 'P')
+			else if (map->content[y][x] == 'P')
 				mlx_put_image_to_window(mlx, mlx_win, img->astronaut_img, x*img->img_width, y*img->img_height);
-			else if (map[y][x] == 'E')
+			else if (map->content[y][x] == 'E')
 				mlx_put_image_to_window(mlx, mlx_win, img->earth_img, x*img->img_width, y*img->img_height);
 			else
 			{
-				printf("Error/n");
+				printf("\nError\n");
 				return ;
 			}
 			x++;
@@ -162,8 +164,8 @@ int	main(void)
 	img.addr = mlx_get_data_addr(img.astronaut_img, &img.bits_per_pixel, &img.line_length,
 								&img.endian);	
 	download_images(mlx, &img);
-	map = import_map(map);
-	print_map(map, &img, mlx, mlx_win);
+	import_map(&map);
+	print_map(&map, &img, mlx, mlx_win);
 	mlx_loop(mlx);
 	return 0;
 }
