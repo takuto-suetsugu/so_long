@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
+#    By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 14:06:28 by tsuetsug          #+#    #+#              #
-#    Updated: 2022/02/14 17:37:29 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/02/14 21:20:16 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
