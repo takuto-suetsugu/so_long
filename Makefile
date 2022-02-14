@@ -6,7 +6,7 @@
 #    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 14:06:28 by tsuetsug          #+#    #+#              #
-#    Updated: 2022/02/07 14:30:26 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/02/14 11:20:49 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,23 +34,23 @@ all:	$(NAME)
 
 $(NAME):
 	@echo "$(BWHITE)Compiling libraries...$(OFF)"
-	@${MAKE} -C libft
+	${MAKE} -C libft
 	@echo "$(BGREEN)Libraries done.$(OFF)"
 
 	@echo "$(BWHITE)Compiling push_swap...$(OFF)"
-	@$(CC) $(CC_FLAGS) -c $(SRCS) -I$(HEADERS)
-	@$(CC) -g -o $(NAME) $(OBJ) $(LIBFT) $(CC_FLAGS) $(MLB_FLAGS)
+	$(CC) $(CC_FLAGS) -c $(SRCS) -I $(HEADERS)
+	$(CC) -g -o $(NAME) $(OBJ) $(LIBFT) $(CC_FLAGS) $(MLB_FLAGS)
 	@echo "$(BGREEN)push_swap build completed.$(OFF)"
 	
 clean:
 	@echo "$(BWHITE)Removing object-files...$(OFF)"
-	@$(RM) $(OBJ)
+	$(RM) $(OBJ)
 	@cd libft && $(MAKE) clean
 	@echo "$(BGREEN)Clean done.$(OFF)"
 
 fclean:	clean
 	@echo "$(BWHITE)Removing object-files and binary-files...$(OFF)"
-	@$(RM) $(NAME)
+	$(RM) $(NAME)
 	@cd libft && $(MAKE) fclean
 	@echo "$(BGREEN)Fclean done.$(OFF)"
 

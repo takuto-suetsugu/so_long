@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/30 22:18:03 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/01/28 11:17:36 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/14 15:23:34 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+
+# define MAXFD	4096
+# define BUFFER_SIZE	200
 
 typedef struct s_split
 {
@@ -57,5 +60,7 @@ char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char			*ft_strjoin(char const *s1, char const *s2);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlen(const char *str);
+char			*get_next_line(int fd);
+int				ft_index(const char *s, char c);
 
 #endif

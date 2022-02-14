@@ -9,7 +9,6 @@
 
 # include "../libft/libft.h"
 # include "../minilibx_mms_20200219/mlx.h"
-
 int main(void);
 
 #endif

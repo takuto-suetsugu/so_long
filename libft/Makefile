@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+         #
+#    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/11/22 16:27:05 by tsuetsug          #+#    #+#              #
-#    Updated: 2020/12/01 01:29:30 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/02/14 15:23:00 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRCS			= ft_memset.c ft_memcpy.c ft_memccpy.c ft_atoi.c ft_bzero.c \
 			ft_strtrim.c ft_strmapi.c ft_split.c ft_itoa.c \
 			ft_putchar_fd.c ft_putnbr_fd.c ft_putendl_fd.c ft_putstr_fd.c
 
-OBJS			= $(SRCS:.c=.o)
+GNLSRC 			= ./gnl/get_next_line.c ./gnl/get_next_line_utils.c
 
 CC				= gcc
 CFLAGS			= -Wall -Wextra -Werror -I.
@@ -30,12 +30,12 @@ RM				= rm -f
 all:			$(NAME)
 
 $(NAME):
-				gcc $(CFLAGS) -c $(SRCS)
-				ar rc $(NAME) $(OBJS)
-				ranlib $(NAME)
+				gcc $(CFLAGS) -c $(SRCS) ${GNLSRC}
+				ar rc ${NAME} *.o
 
 clean:
-				$(RM) $(OBJS)
+				$(RM) *.o
+
 fclean:			clean
 				$(RM) $(NAME)
 
