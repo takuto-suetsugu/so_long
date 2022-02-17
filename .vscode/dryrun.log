@@ -1,5 +1,17 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory `/Users/tsuetsug/Desktop/Cluster/so_long'
-make: Nothing to be done for `all'.
+echo "Compiling libraries..."
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -C libft
+ 
+make[1]: Entering directory `/Users/tsuetsug/Desktop/Cluster/so_long/libft'
+make[1]: Nothing to be done for `all'.
+ 
+make[1]: Leaving directory `/Users/tsuetsug/Desktop/Cluster/so_long/libft'
+ 
+echo "Libraries done."
+echo "Compiling so_long..."
+gcc -Wall -Wextra -Werror -c srcs/so_long.c srcs/ft_mlx.c srcs/import_file.c srcs/so_long_utils.c srcs/import_file_error.c -I includes/so_long.h
+gcc -g -o so_long *.o libft/libft.a -Wall -Wextra -Werror -I /usr/X11/include -g -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
+echo "so_long build completed."
 make: Leaving directory `/Users/tsuetsug/Desktop/Cluster/so_long'
  

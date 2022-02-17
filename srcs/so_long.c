@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/14 18:48:28 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:26:06 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,7 @@ int	main(int argc, char **argv)
 	img.addr = mlx_get_data_addr(img.astronaut, &img.bits_per_pixel,
 			&img.line_length, &img.endian);
 	download_images(mlx, &img);
-	check_file_name(argv[1]);
-	read_file(argv[1], &map);
-	sizeof_file(&map);
-	import_map(&map);
+	import_map(argv[1], &map);
 	print_map(&map, &img, mlx, mlx_win);
 	mlx_loop(mlx);
 	return (0);

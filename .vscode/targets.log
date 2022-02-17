@@ -8,7 +8,8 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Mon Feb 14 17:48:20 2022
+# Make data base, printed on Thu Feb 17 12:29:28 2022
+ 
 
 # Variables
 
@@ -16,7 +17,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# makefile (from `Makefile', line 18)
+# makefile (from `Makefile', line 19)
 OBJ = *.o
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
@@ -28,7 +29,7 @@ OBJ = *.o
 CURDIR := /Users/tsuetsug/Desktop/Cluster/so_long
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 28)
+# makefile (from `Makefile', line 29)
 RM = rm -f
 # environment
 VSCODE_NLS_CONFIG = {"locale":"ja","availableLanguages":{},"_languagePackSupport":true}
@@ -36,18 +37,18 @@ VSCODE_NLS_CONFIG = {"locale":"ja","availableLanguages":{},"_languagePackSupport
 _ = /usr/bin/make
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
-# makefile (from `Makefile', line 24)
+# makefile (from `Makefile', line 25)
 MLB_FLAGS = -I /usr/X11/include -g -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
 # environment
 VSCODE_NODE_CACHED_DATA_DIR = /Users/tsuetsug/Library/Application Support/Code/CachedData/91899dcef7b8110878ea59626991a18c8a6a1b3e
 # environment
 VERBOSE_LOGGING = true
 # environment
-VSCODE_LOGS = /Users/tsuetsug/Library/Application Support/Code/logs/20220214T103233
+VSCODE_LOGS = /Users/tsuetsug/Library/Application Support/Code/logs/20220217T093437
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000pbh0005kw/T/vscode-ipc-57e5dbef-b1b4-42fc-b261-655d3d819c02.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000pbh0005kw/T/vscode-ipc-9432c673-439d-4e18-876d-63cc742b3252.sock
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.3MM7URlUbv/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.yLTIJWKqwQ/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki
 # environment
@@ -56,10 +57,10 @@ VSCODE_LOG_STACK = false
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
-# makefile (from `Makefile', line 27)
+# makefile (from `Makefile', line 28)
 CC_FLAGS = -Wall -Wextra -Werror
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.qrbL5BLKrV/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.eYKI5Qyv1l/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -74,7 +75,7 @@ MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 LOGNAME = tsuetsug
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
-# makefile (from `Makefile', line 20)
+# makefile (from `Makefile', line 21)
 HEADERS = includes/so_long.h
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
@@ -87,12 +88,12 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from `Makefile', line 16)
-SRCS = srcs/so_long.c srcs/ft_mlx.c srcs/get_file.c srcs/so_long_utils.c
+SRCS = srcs/so_long.c srcs/ft_mlx.c srcs/import_file.c srcs/so_long_utils.c srcs/import_file_error.c
 # environment
 SHLVL = 1
-# makefile (from `Makefile', line 22)
+# makefile (from `Makefile', line 23)
 LIBFT = libft/libft.a
-# makefile (from `Makefile', line 26)
+# makefile (from `Makefile', line 27)
 CC = gcc
 # default
 MAKE_VERSION := 3.81
@@ -125,7 +126,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000002.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x1000000e.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -143,21 +144,22 @@ LC_ALL = C
 # environment
 TMOUT = 86400
 # environment
-SECURITYSESSIONID = 186b1
+SECURITYSESSIONID = 1873a
 # automatic
 ^F = $(notdir $^)
 # default
 SUFFIXES := 
 # default
 .INCLUDE_DIRS = /usr/local/include
+ 
 # environment
 MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 43379
+VSCODE_PID = 3447
 # variable set hash-table stats:
-# Load=72/1024=7%, Rehash=0, Collisions=3/98=3%
+# Load=72/1024=7%, Rehash=0, Collisions=10/120=8%
 
 # Pattern-specific Variable Values
 
@@ -172,7 +174,7 @@ VSCODE_PID = 43379
 # Implicit Rules
 
 %.o: %.c
-#  commands to execute (from `Makefile', line 31):
+#  commands to execute (from `Makefile', line 32):
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
 	
 
@@ -185,9 +187,9 @@ all: so_long
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/22=0%
 
 # Not a target:
 .SUFFIXES:
@@ -198,7 +200,7 @@ all: so_long
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-02-14 17:37:29
+#  Last modified 2022-02-17 12:29:15
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -208,7 +210,7 @@ fclean: clean
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 52):
+#  commands to execute (from `Makefile', line 53):
 	@echo "$(BWHITE)Removing object-files and binary-files...$(OFF)"
 	$(RM) $(NAME)
 	@cd libft && $(MAKE) fclean
@@ -230,7 +232,7 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 46):
+#  commands to execute (from `Makefile', line 47):
 	@echo "$(BWHITE)Removing object-files...$(OFF)"
 	$(RM) $(OBJ)
 	@cd libft && $(MAKE) clean
@@ -239,10 +241,29 @@ clean:
 
 so_long:
 #  Implicit rule search has not been done.
-#  Last modified 2022-02-14 17:45:58
+#  Implicit/static pattern stem: `'
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
-#  commands to execute (from `Makefile', line 36):
+#  Needs to be updated (-q is set).
+# automatic
+# @ := so_long
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=4/30=13%
+#  commands to execute (from `Makefile', line 37):
 	@echo "$(BWHITE)Compiling libraries...$(OFF)"
 	${MAKE} -C libft
 	@echo "$(BGREEN)Libraries done.$(OFF)"
@@ -253,7 +274,7 @@ so_long:
 	
 
 # files hash-table stats:
-# Load=8/1024=1%, Rehash=0, Collisions=0/25=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/26=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -265,6 +286,6 @@ so_long:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Feb 14 17:48:20 2022
+# Finished Make data base on Thu Feb 17 12:29:28 2022
 
  

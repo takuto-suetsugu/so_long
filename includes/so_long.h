@@ -35,8 +35,10 @@ void	ft_error(char *error_message);
 void	download_images(void *mlx, t_data *img);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	read_file(char *argv, t_map *map);
-void	import_map(t_map *map);
-void	sizeof_file(t_map *map);
-void	check_file_name(char *argv);
+void	import_map(char *file_name, t_map *map);
+void	sizeof_col_row(t_map *map);
+void	validate_file_name(char *argv);
+void	validate_wall(t_map *map);
+void	validate_map_content(t_map *map);
 
 #endif

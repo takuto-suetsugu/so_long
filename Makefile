@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+         #
+#    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 14:06:28 by tsuetsug          #+#    #+#              #
-#    Updated: 2022/02/14 21:20:16 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/02/17 12:29:15 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	= so_long
 
-SRCS	= srcs/so_long.c srcs/ft_mlx.c srcs/get_file.c srcs/so_long_utils.c
+SRCS	= srcs/so_long.c srcs/ft_mlx.c srcs/import_file.c srcs/so_long_utils.c \
+			srcs/import_file_error.c
 
 OBJ		= *.o
 

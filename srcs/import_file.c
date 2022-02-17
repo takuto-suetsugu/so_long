@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_file.c                                         :+:      :+:    :+:   */
+/*   import_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/15 11:43:26 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/17 12:30:53 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	read_file(char *argv, t_map *map)
 	map->str = ft_strdup(buff);
 }
 
-void	sizeof_file(t_map *map)
+void	sizeof_col_row(t_map *map)
 {
 	int prev_col;
 	int	i;
@@ -57,12 +57,12 @@ void	sizeof_file(t_map *map)
 		i++;
 		map->row++;
 	}
-	if ((map->col < 3 && map->row < 4) ||
-		(map->col < 4 && map->row < 3))
+	if ((map->col < 3 && map->row < 5)
+		|| (map->col < 5 && map->row < 3))
 		ft_error("Map is too small");
 }
 
-void	import_map(t_map *map)
+void	load_map(t_map *map)
 {
 	int		i;
 	int		j;
@@ -74,16 +74,25 @@ void	import_map(t_map *map)
 	i = -1;
 	j = -1;
 	k = 0;
-	while (i++ < (map->row - 1))
+	while (++i < map->row)
 	{
 		map->content[i] = malloc(sizeof(char) * map->col);
-		while (j++ < (map->col - 1))
+		while (++j < map->col)
 		{
-			map->content[i][j] = map->str[k];
-			k++;
+			map->content[i][j] = map->str[k++];
 		}
 		map->content[i][j] = '\0';
 		j = -1;
 		k++;
 	}
+}
+
+void	import_map(char *file_name, t_map *map)
+{
+	validate_file_name(file_name);
+	read_file(file_name, map);
+	sizeof_col_row(map);
+	load_map(map);
+	validate_map_content(map);
+	validate_wall(map);
 }
