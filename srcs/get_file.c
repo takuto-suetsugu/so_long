@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_file.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/14 18:15:01 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/02/15 11:43:26 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,18 @@ void	sizeof_file(t_map *map)
 		map->col = 0;
 		while ((map->str) && (map->str[i] != '\n'))
 		{
-			if ((prev_col != 0) && (map->row > prev_col))
-				ft_error("Row length is not same");
 			map->col++;
 			i++;
 		}
+		if ((prev_col) && (map->col != prev_col))
+			ft_error("Col length is not same");
 		prev_col = map->col;
 		i++;
 		map->row++;
 	}
+	if ((map->col < 3 && map->row < 4) ||
+		(map->col < 4 && map->row < 3))
+		ft_error("Map is too small");
 }
 
 void	import_map(t_map *map)
