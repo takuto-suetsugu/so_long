@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/02 19:41:10 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:48:20 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,10 +84,10 @@ int	key_press(int keycode, t_vars *vars)
 	return (0);
 }
 
-void	key_press_proc(t_map *map, t_data *img, t_vars *vars)
-{	
-	int	x;
-	int	y;
+char	*search_element_addr(t_map *map, char element)
+{
+	int		x;
+	int		y;
 
 	x = -1;
 	y = -1;
@@ -95,12 +95,22 @@ void	key_press_proc(t_map *map, t_data *img, t_vars *vars)
 	{
 		while (x++ < (map->col - 1))
 		{
-			if (map->content[y][x] == '0')
-				mlx_put_image_to_window(vars->mlx, vars->win, img->background,
-					x * img->width, y * img->height);
+			if (map->content[y][x] == 'P')
+				return (&map->content[y][x]);
 		}
 		x = -1;
 	}
+	ft_error("There is no element!");
+	return (NULL);
+}
+
+void	key_press_proc(t_map *map, t_data *img, t_vars *vars)
+{	
+	char	*P_addr;
+	char	*E_addr;
+
+	P_addr = search_element_addr(map, "P");
+	E_addr = search_element_addr(map, "E");
 }
 
 
