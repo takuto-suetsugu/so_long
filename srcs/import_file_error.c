@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:27:09 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/17 12:29:54 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/02 18:09:54 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,5 @@ void	validate_map_content(t_map *map)
 	c_count = count_map_char('C', map);
 	if (c_count < 1)
 		ft_error("Collectible is invalid");
+	validate_wall(map);
 }

@@ -6,19 +6,19 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/17 12:30:53 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/02 18:09:50 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	read_file(char *argv, t_map *map)
+void	read_file(char *file_name, t_map *map)
 {
 	int		fd;
 	char	buff[2048 + 1];
 	int		rc;
 
-	fd = open(argv, O_RDONLY);
+	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		ft_error("File open error");
 	rc = read(fd, buff, 2048);
@@ -27,9 +27,7 @@ void	read_file(char *argv, t_map *map)
 	else if (rc == 0)
 		ft_error("No content");
 	else
-	{
 		buff[rc] = '\0';
-	}
 	close(fd);
 	map->str = ft_strdup(buff);
 }
@@ -62,7 +60,7 @@ void	sizeof_col_row(t_map *map)
 		ft_error("Map is too small");
 }
 
-void	load_map(t_map *map)
+void	convert_map_2D_array(t_map *map)
 {
 	int		i;
 	int		j;
@@ -92,7 +90,6 @@ void	import_map(char *file_name, t_map *map)
 	validate_file_name(file_name);
 	read_file(file_name, map);
 	sizeof_col_row(map);
-	load_map(map);
+	convert_map_2D_array(map);
 	validate_map_content(map);
-	validate_wall(map);
 }

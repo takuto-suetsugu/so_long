@@ -27,12 +27,20 @@ typedef struct s_data {
 typedef struct s_map {
 	char	*str;
 	char	**content;
+	char	*p_addr;
 	int		col;
 	int		row;
 }				t_map;
 
+typedef struct s_vars {
+	void	*mlx;
+	void	*win;	
+	int		move_x;
+	int		move_y;
+}				t_vars;
+
 void	ft_error(char *error_message);
-void	download_images(void *mlx, t_data *img);
+void	download_images(t_vars *vars, t_data *img);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	read_file(char *argv, t_map *map);
 void	import_map(char *file_name, t_map *map);
@@ -40,5 +48,6 @@ void	sizeof_col_row(t_map *map);
 void	validate_file_name(char *argv);
 void	validate_wall(t_map *map);
 void	validate_map_content(t_map *map);
+void	print_map(t_map	*map, t_data *img, t_vars *vars);
 
 #endif

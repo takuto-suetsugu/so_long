@@ -6,13 +6,22 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/02/17 12:26:06 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/02 19:41:10 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	print_map(t_map	*map, t_data *img, void *mlx, void *mlx_win)
+#define KEY_ESC			53
+#define KEY_Q			12
+#define KEY_W			13
+#define KEY_E			14
+#define KEY_R			15
+#define KEY_A			0
+#define KEY_S			1
+#define KEY_D			2
+
+void	print_map(t_map	*map, t_data *img, t_vars *vars)
 {
 	int	x;
 	int	y;
@@ -24,19 +33,19 @@ void	print_map(t_map	*map, t_data *img, void *mlx, void *mlx_win)
 		while (x++ < (map->col - 1))
 		{
 			if (map->content[y][x] == '0')
-				mlx_put_image_to_window(mlx, mlx_win, img->background,
+				mlx_put_image_to_window(vars->mlx, vars->win, img->background,
 					x * img->width, y * img->height);
 			else if (map->content[y][x] == '1')
-				mlx_put_image_to_window(mlx, mlx_win, img->blackhole,
+				mlx_put_image_to_window(vars->mlx, vars->win, img->blackhole,
 					x * img->width, y * img->height);
 			else if (map->content[y][x] == 'C')
-				mlx_put_image_to_window(mlx, mlx_win, img->planet,
+				mlx_put_image_to_window(vars->mlx, vars->win, img->planet,
 					x * img->width, y * img->height);
 			else if (map->content[y][x] == 'P')
-				mlx_put_image_to_window(mlx, mlx_win, img->astronaut,
+				mlx_put_image_to_window(vars->mlx, vars->win, img->astronaut,
 					x * img->width, y * img->height);
 			else if (map->content[y][x] == 'E')
-				mlx_put_image_to_window(mlx, mlx_win, img->earth,
+				mlx_put_image_to_window(vars->mlx, vars->win, img->earth,
 					x * img->width, y * img->height);
 			else
 				ft_error("There is an unspecified character");
@@ -45,23 +54,77 @@ void	print_map(t_map	*map, t_data *img, void *mlx, void *mlx_win)
 	}
 }
 
+int	key_press(int keycode, t_vars *vars)
+{
+	if (keycode == KEY_W)
+	{
+		vars->move_y++;
+		printf("KEY_W\n");
+	}
+	else if (keycode == KEY_S)
+	{
+		vars->move_y--;
+		printf("KEY_S\n");
+	}
+	else if (keycode == KEY_D)
+	{
+		vars->move_x++;
+		printf("KEY_D\n");
+	}
+	else if (keycode == KEY_A)
+	{
+		vars->move_x--;
+		printf("KEY_A\n");
+	}
+	else if (keycode == KEY_ESC)
+	{
+		mlx_destroy_window(vars->mlx, vars->win);
+		exit(0);
+	}
+	return (0);
+}
+
+void	key_press_proc(t_map *map, t_data *img, t_vars *vars)
+{	
+	int	x;
+	int	y;
+
+	x = -1;
+	y = -1;
+	while (y++ < (map->row - 1))
+	{
+		while (x++ < (map->col - 1))
+		{
+			if (map->content[y][x] == '0')
+				mlx_put_image_to_window(vars->mlx, vars->win, img->background,
+					x * img->width, y * img->height);
+		}
+		x = -1;
+	}
+}
+
+
 int	main(int argc, char **argv)
 {	
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	t_map	map;
+	t_vars			vars;
+	t_data			img;
+	t_map			map;
 
-	mlx = mlx_init();
-	if (mlx == NULL || argc != 2)
-		ft_error("mlx or argv is not valid");
-	mlx_win = mlx_new_window(mlx, 2200, 400, "so_long");
-	img.astronaut = mlx_new_image(mlx, 400, 1000);
-	img.addr = mlx_get_data_addr(img.astronaut, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
-	download_images(mlx, &img);
+	if (argc != 2)
+		ft_error("argc is not 2");
+	vars.mlx = mlx_init();
+	if (vars.mlx == NULL)
+		ft_error("mlx is not valid");
+	vars.win = mlx_new_window(vars.mlx, 1000, 400, "so_long");
+	download_images(&vars, &img);
 	import_map(argv[1], &map);
-	print_map(&map, &img, mlx, mlx_win);
-	mlx_loop(mlx);
+	print_map(&map, &img, &vars);
+
+	mlx_hook(vars.win, 2, 1L<<0, key_press, &vars);
+	key_press_proc(&map, &img, &vars);
+	
+	print_map(&map, &img, &vars);
+
+	mlx_loop(vars.mlx);
 	return (0);
 }
