@@ -1,3 +1,3 @@
 git add .
-git commit -m $argv[2]
+git commit -m "$argv[1]"
 git push
