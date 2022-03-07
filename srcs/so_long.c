@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/02 20:03:59 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 13:30:41 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,9 +158,11 @@ int	main(int argc, char **argv)
 	import_map(argv[1], &map);
 	print_map(&map, &img, &vars);
 
-	mlx_hook(vars.win, 2, 1L<<0, key_press, &vars);
-	key_press_proc(&map, &vars);
-
+	while ()
+	{
+		mlx_hook(vars.win, 2, 1L << 0, key_press, &vars);
+		key_press_proc(&map, &vars);
+	}
 	mlx_loop(vars.mlx);
 	return (0);
 }
