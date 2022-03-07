@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 16:06:17 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 16:15:57 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,37 +98,25 @@ void	key_press_proc(t_game *game)
 	else if (game->move_y == 1)
 	{
 		*P_addr = '0';
-		*(P_addr + game->map.col) = 'P';
+		*(P_addr + game->map.col + 1) = 'P';
 	}
 	else if (game->move_y == -1)
 	{
 		*P_addr = '0';
-		*(P_addr - game->map.col) = 'P';
+		*(P_addr - game->map.col - 1) = 'P';
 	}
 }
 
 int	key_press(int keycode, t_game *game)
 {
 	if (keycode == KEY_W)
-	{
 		game->move_y = 1;
-		printf("KEY_W\n");
-	}
 	else if (keycode == KEY_S)
-	{
 		game->move_y = -1;
-		printf("KEY_S\n");
-	}
 	else if (keycode == KEY_D)
-	{
 		game->move_x = 1;
-		printf("KEY_D\n");
-	}
 	else if (keycode == KEY_A)
-	{
 		game->move_x = -1;
-		printf("KEY_A\n");
-	}
 	else if (keycode == KEY_ESC)
 	{
 		mlx_destroy_window(game->mlx, game->win);
