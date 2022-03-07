@@ -1,3 +1,3 @@
 git add .
-git commit -m "些細な変更"
+git commit -m $argv[1]
 git push
