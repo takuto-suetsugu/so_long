@@ -47,7 +47,7 @@ void	import_map(char *file_name, t_map *map);
 void	sizeof_col_row(t_map *map);
 void	validate_file_name(char *argv);
 void	validate_wall(t_map *map);
-void	validate_map_content(t_map *map);
+void	validate_map_components(t_map *map);
 void	print_map(t_map	*map, t_data *img, t_vars *vars);
 
 #endif

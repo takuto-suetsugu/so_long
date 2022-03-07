@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 11:26:20 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 12:56:09 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	convert_map_2D_array(t_map *map)
 	while (i < map->row)
 	{
 		map->content[i] = malloc(sizeof(char) * map->col);
+		if (!map->content[i])
+			ft_error("Map content is not allocated");
 		ft_strlcpy(map->content[i], &map->str[k], map->col + 1);
 		i++;
 		k = k + map->col + 1;
@@ -85,5 +87,5 @@ void	import_map(char *file_name, t_map *map)
 	read_file(file_name, map);
 	sizeof_col_row(map);
 	convert_map_2D_array(map);
-	validate_map_content(map);
+	validate_map_components(map);
 }
