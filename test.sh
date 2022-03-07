@@ -12,4 +12,4 @@ echo "./so_long simple"
 
 
 echo "./so_long simple.ber"
-./so_long simple.ber
+./so_long maps.ber

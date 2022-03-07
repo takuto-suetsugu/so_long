@@ -27,9 +27,10 @@ typedef struct s_data {
 typedef struct s_map {
 	char	*str;
 	char	**content;
-	char	*p_addr;
 	int		col;
 	int		row;
+	int		player_x;
+	int		player_y;
 }				t_map;
 
 typedef struct s_game {
@@ -44,6 +45,7 @@ typedef struct s_game {
 /* so_long_utils.c */
 void	ft_error(char *error_message);
 void	download_images(t_game *game);
+int		destroy_window(t_game *game);
 
 /* ft_mlx.c */
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
@@ -58,5 +60,11 @@ void	sizeof_col_row(t_game *game);
 void	validate_file_name(char *file_name);
 void	validate_wall(t_game *game);
 void	validate_map_components(t_game *game);
+
+/* key_control.c */
+char	*search_element_addr(t_game *game, char element);
+void	key_press_proc(t_game *game);
+int		key_press(int keycode, t_game *game);
+
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 15:54:53 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 17:10:44 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	convert_map_2D_array(t_game *game)
 	k = 0;
 	while (i < game->map.row)
 	{
-		game->map.content[i] = malloc(sizeof(char) * game->map.col);
+		game->map.content[i] = malloc(sizeof(char) * (game->map.col + 1));
 		if (!game->map.content[i])
 			ft_error("Map content is not allocated");
 		ft_strlcpy(game->map.content[i], &game->map.str[k], game->map.col + 1);
@@ -81,11 +81,35 @@ void	convert_map_2D_array(t_game *game)
 	}
 }
 
+void	save_player_position(t_game *game)
+{
+	int		x;
+	int		y;
+
+	x = -1;
+	y = -1;
+	while (y++ < (game->map.row - 1))
+	{
+		while (x++ < (game->map.col - 1))
+		{
+			if (game->map.content[y][x] == 'P')
+			{
+				game->map.player_x = x;
+				game->map.player_y = y;
+				return ;
+			}
+		}
+		x = -1;
+	}
+	ft_error("There is no P!");
+}
+
 void	import_map(char *file_name, t_game *game)
 {
 	validate_file_name(file_name);
 	read_file(file_name, game);
 	sizeof_col_row(game);
 	convert_map_2D_array(game);
+	save_player_position(game);
 	validate_map_components(game);
 }

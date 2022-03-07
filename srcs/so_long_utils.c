@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:24:55 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 15:19:15 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:03:08 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,10 @@ void	download_images(t_game *game)
 			"images/blackhole.xpm", &width, &height);
 	game->img.height = height;
 	game->img.width = width;
+}
+
+int	destroy_window(t_game *game)
+{
+	mlx_destroy_window(game->mlx, game->win);
+	exit(0);
 }

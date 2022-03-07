@@ -6,21 +6,19 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 16:15:57 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 18:04:22 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-#define KEY_ESC			53
-#define KEY_Q			12
-#define KEY_W			13
-#define KEY_E			14
-#define KEY_R			15
-#define KEY_A			0
-#define KEY_S			1
-#define KEY_D			2
-#define X_EVENT_KEY_EXIT		17
+#define X_EVENT_KEY_PRESS		2
+
+void	put_image_to_window(t_game *game, int x, int y, void *component)
+{
+	mlx_put_image_to_window(game->mlx, game->win, component,
+		x * game->img.width, y * game->img.height);
+}
 
 void	print_map(t_game *game)
 {
@@ -34,96 +32,20 @@ void	print_map(t_game *game)
 		while (x++ < (game->map.col - 1))
 		{
 			if (game->map.content[y][x] == '0')
-				mlx_put_image_to_window(game->mlx, game->win, game->img.background,
-					x * game->img.width, y * game->img.height);
+				put_image_to_window(game, x, y, game->img.background);
 			else if (game->map.content[y][x] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, game->img.blackhole,
-					x * game->img.width, y * game->img.height);
+				put_image_to_window(game, x, y, game->img.blackhole);
 			else if (game->map.content[y][x] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win, game->img.planet,
-					x * game->img.width, y * game->img.height);
+				put_image_to_window(game, x, y, game->img.planet);
 			else if (game->map.content[y][x] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win, game->img.astronaut,
-					x * game->img.width, y * game->img.height);
+				put_image_to_window(game, x, y, game->img.astronaut);
 			else if (game->map.content[y][x] == 'E')
-				mlx_put_image_to_window(game->mlx, game->win, game->img.earth,
-					x * game->img.width, y * game->img.height);
+				put_image_to_window(game, x, y, game->img.earth);
 			else
 				ft_error("There is an unspecified character");
 		}
 		x = -1;
 	}
-}
-
-
-char	*search_element_addr(t_game *game, char element)
-{
-	int		x;
-	int		y;
-
-	x = -1;
-	y = -1;
-	while (y++ < (game->map.row - 1))
-	{
-		while (x++ < (game->map.col - 1))
-		{
-			if (game->map.content[y][x] == element)
-				return (&game->map.content[y][x]);
-		}
-		x = -1;
-	}
-	ft_error("There is no element!");
-	return (NULL);
-}
-
-void	key_press_proc(t_game *game)
-{	
-	char	*P_addr;
-	char	*E_addr;
-
-	P_addr = search_element_addr(game, 'P');
-	printf("%c", *P_addr);
-	printf("%d", game->move_x);
-	E_addr = search_element_addr(game, 'E');
-	if (game->move_x == 1)
-	{
-		*P_addr = '0';
-		*(P_addr + 1) = 'P';
-	}
-	else if (game->move_x == -1)
-	{
-		*P_addr = '0';
-		*(P_addr - 1) = 'P';
-	}
-	else if (game->move_y == 1)
-	{
-		*P_addr = '0';
-		*(P_addr + game->map.col + 1) = 'P';
-	}
-	else if (game->move_y == -1)
-	{
-		*P_addr = '0';
-		*(P_addr - game->map.col - 1) = 'P';
-	}
-}
-
-int	key_press(int keycode, t_game *game)
-{
-	if (keycode == KEY_W)
-		game->move_y = 1;
-	else if (keycode == KEY_S)
-		game->move_y = -1;
-	else if (keycode == KEY_D)
-		game->move_x = 1;
-	else if (keycode == KEY_A)
-		game->move_x = -1;
-	else if (keycode == KEY_ESC)
-	{
-		mlx_destroy_window(game->mlx, game->win);
-		exit(0);
-	}
-	key_press_proc(game);
-	return (0);
 }
 
 void	game_init(t_game *game)
@@ -135,10 +57,11 @@ void	game_init(t_game *game)
 	game->move_y = 0;
 }
 
-int		main_loop(t_game *game)
+int	main_loop(t_game *game)
 {
 	print_map(game);
 	mlx_hook(game->win, 2, 0, key_press, game);
+	mlx_hook(game->win, X_EVENT_KEY_PRESS, 0, &destroy_window, game);
 	return (0);
 }
 

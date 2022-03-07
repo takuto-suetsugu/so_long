@@ -3,6 +3,7 @@
     "files.associations": {
         "__tree": "c",
         "map": "c",
-        "stack": "c"
+        "stack": "c",
+        "so_long.h": "c"
     }
 }
