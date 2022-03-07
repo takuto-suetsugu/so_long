@@ -2,6 +2,7 @@
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
         "__tree": "c",
-        "map": "c"
+        "map": "c",
+        "stack": "c"
     }
 }

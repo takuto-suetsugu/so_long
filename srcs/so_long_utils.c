@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:24:55 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 10:19:46 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:19:15 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ void	ft_error(char *error_message)
 	exit(1);
 }
 
-void	download_images(t_vars *vars, t_data *img)
+void	download_images(t_game *game)
 {
 	int		width;
 	int		height;
 
-	img->astronaut = mlx_xpm_file_to_image(vars->mlx,
+	game->img.astronaut = mlx_xpm_file_to_image(game->mlx,
 			"images/astronaut.xpm", &width, &height);
-	img->background = mlx_xpm_file_to_image(vars->mlx,
+	game->img.background = mlx_xpm_file_to_image(game->mlx,
 			"images/background.xpm", &width, &height);
-	img->planet = mlx_xpm_file_to_image(vars->mlx,
+	game->img.planet = mlx_xpm_file_to_image(game->mlx,
 			"images/planet.xpm", &width, &height);
-	img->earth = mlx_xpm_file_to_image(vars->mlx,
+	game->img.earth = mlx_xpm_file_to_image(game->mlx,
 			"images/earth.xpm", &width, &height);
-	img->blackhole = mlx_xpm_file_to_image(vars->mlx,
+	game->img.blackhole = mlx_xpm_file_to_image(game->mlx,
 			"images/blackhole.xpm", &width, &height);
-	img->height = height;
-	img->width = width;
+	game->img.height = height;
+	game->img.width = width;
 }

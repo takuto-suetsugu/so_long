@@ -32,22 +32,31 @@ typedef struct s_map {
 	int		row;
 }				t_map;
 
-typedef struct s_vars {
+typedef struct s_game {
 	void	*mlx;
-	void	*win;	
+	void	*win;
 	int		move_x;
 	int		move_y;
-}				t_vars;
+	t_map	map;
+	t_data	img;
+}				t_game;
 
+/* so_long_utils.c */
 void	ft_error(char *error_message);
-void	download_images(t_vars *vars, t_data *img);
+void	download_images(t_game *game);
+
+/* ft_mlx.c */
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	read_file(char *argv, t_map *map);
-void	import_map(char *file_name, t_map *map);
-void	sizeof_col_row(t_map *map);
-void	validate_file_name(char *argv);
-void	validate_wall(t_map *map);
-void	validate_map_components(t_map *map);
-void	print_map(t_map	*map, t_data *img, t_vars *vars);
+
+/* import_file.c */
+void	read_file(char *file_name, t_game *game);
+void	import_map(char *file_name, t_game *game);
+void	convert_map_2D_array(t_game *game);
+void	sizeof_col_row(t_game *game);
+
+/* import_file_error.c */
+void	validate_file_name(char *file_name);
+void	validate_wall(t_game *game);
+void	validate_map_components(t_game *game);
 
 #endif

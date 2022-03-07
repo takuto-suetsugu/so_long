@@ -6,13 +6,13 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 12:56:09 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 15:54:53 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	read_file(char *file_name, t_map *map)
+void	read_file(char *file_name, t_game *game)
 {
 	int		fd;
 	char	buff[2048 + 1];
@@ -29,63 +29,63 @@ void	read_file(char *file_name, t_map *map)
 	else
 		buff[rc] = '\0';
 	close(fd);
-	map->str = ft_strdup(buff);
+	game->map.str = ft_strdup(buff);
 }
 
-void	sizeof_col_row(t_map *map)
+void	sizeof_col_row(t_game *game)
 {
 	int	prev_col;
 	int	i;
 
 	i = 0;
 	prev_col = 0;
-	map->col = 0;
-	map->row = 0;
-	while (map->str[i])
+	game->map.col = 0;
+	game->map.row = 0;
+	while (game->map.str[i])
 	{
-		map->col = 0;
-		while ((map->str) && (map->str[i] != '\n'))
+		game->map.col = 0;
+		while ((game->map.str) && (game->map.str[i] != '\n'))
 		{
-			map->col++;
+			game->map.col++;
 			i++;
 		}
-		if ((prev_col) && (map->col != prev_col))
+		if ((prev_col) && (game->map.col != prev_col))
 			ft_error("Col length is not same, map is not rectangular");
-		prev_col = map->col;
+		prev_col = game->map.col;
 		i++;
-		map->row++;
+		game->map.row++;
 	}
-	if ((map->col < 3 && map->row < 5)
-		|| (map->col < 5 && map->row < 3))
+	if ((game->map.col < 3 && game->map.row < 5)
+		|| (game->map.col < 5 && game->map.row < 3))
 		ft_error("Map is too small");
 }
 
-void	convert_map_2D_array(t_map *map)
+void	convert_map_2D_array(t_game *game)
 {
 	int		i;
 	int		k;
 
-	map->content = malloc(sizeof(char *) * (map->row));
-	if (!map->content)
+	game->map.content = malloc(sizeof(char *) * (game->map.row));
+	if (!game->map.content)
 		ft_error("Map is not allocated");
 	i = 0;
 	k = 0;
-	while (i < map->row)
+	while (i < game->map.row)
 	{
-		map->content[i] = malloc(sizeof(char) * map->col);
-		if (!map->content[i])
+		game->map.content[i] = malloc(sizeof(char) * game->map.col);
+		if (!game->map.content[i])
 			ft_error("Map content is not allocated");
-		ft_strlcpy(map->content[i], &map->str[k], map->col + 1);
+		ft_strlcpy(game->map.content[i], &game->map.str[k], game->map.col + 1);
 		i++;
-		k = k + map->col + 1;
+		k = k + game->map.col + 1;
 	}
 }
 
-void	import_map(char *file_name, t_map *map)
+void	import_map(char *file_name, t_game *game)
 {
 	validate_file_name(file_name);
-	read_file(file_name, map);
-	sizeof_col_row(map);
-	convert_map_2D_array(map);
-	validate_map_components(map);
+	read_file(file_name, game);
+	sizeof_col_row(game);
+	convert_map_2D_array(game);
+	validate_map_components(game);
 }
