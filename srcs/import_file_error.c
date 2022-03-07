@@ -6,20 +6,18 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:27:09 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/02 18:09:54 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 10:47:07 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	validate_file_name(char *argv)
+void	validate_file_name(char *file_name)
 {
-	while ((*argv) && (*argv != '.'))
-		argv++;
-	if (ft_strncmp(argv, ".ber", 4) != 0)
-		ft_error("File is not .ber");
-	if (*(argv + 4))
-		ft_error("File name is not a valid");
+	while ((*file_name) && (*file_name != '.'))
+		file_name++;
+	if (ft_strncmp(file_name, ".ber\0", 5) != 0)
+		ft_error("File type is not .ber");
 }
 
 void	validate_wall(t_map *map)

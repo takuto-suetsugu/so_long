@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/02 18:09:50 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:26:20 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	read_file(char *file_name, t_map *map)
 
 void	sizeof_col_row(t_map *map)
 {
-	int prev_col;
+	int	prev_col;
 	int	i;
 
 	i = 0;
@@ -50,7 +50,7 @@ void	sizeof_col_row(t_map *map)
 			i++;
 		}
 		if ((prev_col) && (map->col != prev_col))
-			ft_error("Col length is not same");
+			ft_error("Col length is not same, map is not rectangular");
 		prev_col = map->col;
 		i++;
 		map->row++;
@@ -63,25 +63,19 @@ void	sizeof_col_row(t_map *map)
 void	convert_map_2D_array(t_map *map)
 {
 	int		i;
-	int		j;
 	int		k;
 
 	map->content = malloc(sizeof(char *) * (map->row));
 	if (!map->content)
 		ft_error("Map is not allocated");
-	i = -1;
-	j = -1;
+	i = 0;
 	k = 0;
-	while (++i < map->row)
+	while (i < map->row)
 	{
 		map->content[i] = malloc(sizeof(char) * map->col);
-		while (++j < map->col)
-		{
-			map->content[i][j] = map->str[k++];
-		}
-		map->content[i][j] = '\0';
-		j = -1;
-		k++;
+		ft_strlcpy(map->content[i], &map->str[k], map->col + 1);
+		i++;
+		k = k + map->col + 1;
 	}
 }
 
