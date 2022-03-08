@@ -6,7 +6,7 @@
 #    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 14:06:28 by tsuetsug          #+#    #+#              #
-#    Updated: 2022/03/08 11:48:29 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/03/08 13:34:08 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT	= libft/libft.a
 
 MLB_FLAGS = -I /usr/X11/include -g -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
 
-CC		= gcc
+CC		= cc
 CC_FLAGS= -Wall -Wextra -Werror
 RM		= rm -f
 

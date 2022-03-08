@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/08 12:52:09 by tsuetsug          #+#    #+#             */
+/*   Updated: 2022/03/08 12:52:54 by tsuetsug         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
@@ -5,8 +16,7 @@
 # include	<stdlib.h>
 # include	<stdio.h>
 # include   <errno.h>
-#include    <fcntl.h>
-
+# include   <fcntl.h>
 # include "../libft/libft.h"
 # include "../minilibx_mms_20200219/mlx.h"
 
@@ -66,6 +76,5 @@ void	validate_map_components(t_game *game);
 char	*search_element_addr(t_game *game, char element);
 void	key_press_proc(t_game *game);
 int		key_press(int keycode, t_game *game);
-
 
 #endif

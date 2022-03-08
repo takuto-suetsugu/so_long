@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:24:55 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/08 11:48:18 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:45:03 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	ft_error(char *error_message)
 {
-	printf("\x1b[31m");
 	printf("Error: %s\n\n", error_message);
-	printf("\x1b[39m");
 	exit(1);
 }
 
@@ -47,8 +45,14 @@ void	download_images(t_game *game)
 	game->img.width = width;
 }
 
+void	free_map(t_game *game)
+{
+	
+}
+
 int	destroy_window(t_game *game)
 {
+	free_map(game);
 	mlx_destroy_window(game->mlx, game->win);
 	exit(0);
 }
