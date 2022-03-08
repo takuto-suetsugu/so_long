@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:26:13 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 17:59:42 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:46:24 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,24 +51,17 @@ void	move_player(t_game *game)
 	next_y = game->map.player_y + game->move_y;
 	if (game->map.content[next_y][next_x] == '1')
 		return ;
+	printf("move_count:%d\n", ++game->move_count);
 	game->map.content[game->map.player_y][game->map.player_x] = '0';
-	game->map.player_x = next_x;
-	game->map.player_y = next_y;
 	if (game->map.content[next_y][next_x] == 'E')
 	{
-		game->map.content[game->map.player_y][game->map.player_x] = 'P';
+		game->map.content[next_y][next_x] = 'P';
 		destroy_window(game);
 	}
 	else
-		game->map.content[game->map.player_y][game->map.player_x] = 'P';
-}
-
-void	key_press_proc(t_game *game)
-{
-	if (game->move_x || game->move_y)
-	{
-		move_player(game);
-	}
+		game->map.content[next_y][next_x] = 'P';
+	game->map.player_x = next_x;
+	game->map.player_y = next_y;
 }
 
 int	key_press(int keycode, t_game *game)
@@ -85,6 +78,7 @@ int	key_press(int keycode, t_game *game)
 		game->move_y = -1;
 	else if (keycode == KEY_ESC)
 		destroy_window(game);
-	key_press_proc(game);
+	if (game->move_x || game->move_y)
+		move_player(game);
 	return (0);
 }

@@ -38,6 +38,7 @@ typedef struct s_game {
 	void	*win;
 	int		move_x;
 	int		move_y;
+	int		move_count;
 	t_map	map;
 	t_data	img;
 }				t_game;

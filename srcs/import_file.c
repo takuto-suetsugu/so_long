@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/07 17:10:44 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/08 11:33:02 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,12 @@ void	sizeof_col_row(t_game *game)
 	while (game->map.str[i])
 	{
 		game->map.col = 0;
-		while ((game->map.str) && (game->map.str[i] != '\n'))
+		while (game->map.str[i] && (game->map.str[i] != '\n'))
 		{
 			game->map.col++;
 			i++;
 		}
-		if ((prev_col) && (game->map.col != prev_col))
+		if (prev_col && (game->map.col != prev_col))
 			ft_error("Col length is not same, map is not rectangular");
 		prev_col = game->map.col;
 		i++;
@@ -81,16 +81,16 @@ void	convert_map_2D_array(t_game *game)
 	}
 }
 
-void	save_player_position(t_game *game)
+void	save_player_start_position(t_game *game)
 {
 	int		x;
 	int		y;
 
-	x = -1;
-	y = -1;
-	while (y++ < (game->map.row - 1))
+	x = 0;
+	y = 0;
+	while (y < game->map.row)
 	{
-		while (x++ < (game->map.col - 1))
+		while (x < game->map.col)
 		{
 			if (game->map.content[y][x] == 'P')
 			{
@@ -98,8 +98,10 @@ void	save_player_position(t_game *game)
 				game->map.player_y = y;
 				return ;
 			}
+			x++;
 		}
-		x = -1;
+		x = 0;
+		y++;
 	}
 	ft_error("There is no P!");
 }
@@ -110,6 +112,6 @@ void	import_map(char *file_name, t_game *game)
 	read_file(file_name, game);
 	sizeof_col_row(game);
 	convert_map_2D_array(game);
-	save_player_position(game);
+	save_player_start_position(game);
 	validate_map_components(game);
 }

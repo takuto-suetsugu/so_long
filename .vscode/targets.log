@@ -4,11 +4,12 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software; see the source for copying conditions.
 # There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
 # PARTICULAR PURPOSE.
- 
 
 # This program built for i386-apple-darwin11.3.0
+ 
 
-# Make data base, printed on Mon Mar  7 16:27:26 2022
+# Make data base, printed on Tue Mar  8 11:48:45 2022
+ 
 
 # Variables
 
@@ -43,11 +44,11 @@ VSCODE_NODE_CACHED_DATA_DIR = /Users/tsuetsug/Library/Application Support/Code/C
 # environment
 VERBOSE_LOGGING = true
 # environment
-VSCODE_LOGS = /Users/tsuetsug/Library/Application Support/Code/logs/20220307T123709
+VSCODE_LOGS = /Users/tsuetsug/Library/Application Support/Code/logs/20220308T110306
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000pbh0005kw/T/vscode-ipc-07300014-1550-4f58-8fa5-3225243bad9b.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/zz/zyxvpxvq6csfxvn_n0000pbh0005kw/T/vscode-ipc-53bce1ff-53b4-41ce-b9e6-359653f3a116.sock
 # environment
-Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.VRcnGgOIA6/Render
+Apple_PubSub_Socket_Render = /private/tmp/com.apple.launchd.dsdg84jOzi/Render
 # environment
 PATH = /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/go/bin:/usr/local/munki
 # environment
@@ -59,7 +60,7 @@ ELECTRON_RUN_AS_NODE = 1
 # makefile (from `Makefile', line 28)
 CC_FLAGS = -Wall -Wextra -Werror
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.0r8v9ckqQk/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.kCblfYtL7d/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -87,7 +88,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from `Makefile', line 16)
-SRCS = srcs/so_long.c srcs/ft_mlx.c srcs/import_file.c srcs/so_long_utils.c srcs/import_file_error.c srcs/key_control.c
+SRCS = srcs/so_long.c srcs/import_file.c srcs/so_long_utils.c srcs/import_file_error.c srcs/key_control.c
 # environment
 SHLVL = 1
 # makefile (from `Makefile', line 23)
@@ -125,7 +126,7 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000001.Electron
+XPC_SERVICE_NAME = com.apple.xpc.launchd.oneshot.0x10000006.Electron
 # automatic
 +D = $(patsubst %/,%,$(dir $+))
 # automatic
@@ -143,7 +144,7 @@ LC_ALL = C
 # environment
 TMOUT = 86400
 # environment
-SECURITYSESSIONID = 186a8
+SECURITYSESSIONID = 186bf
 # automatic
 ^F = $(notdir $^)
 # default
@@ -155,7 +156,7 @@ MAKELEVEL := 0
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2420
+VSCODE_PID = 27554
 # variable set hash-table stats:
 # Load=72/1024=7%, Rehash=0, Collisions=3/98=3%
 
@@ -198,7 +199,7 @@ all: so_long
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-03-07 16:27:25
+#  Last modified 2022-03-08 11:48:30
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -239,7 +240,7 @@ clean:
 
 so_long:
 #  Implicit rule search has not been done.
-#  Last modified 2022-03-07 16:25:30
+#  Last modified 2022-03-08 11:48:33
 #  File has been updated.
 #  Successfully updated.
 #  commands to execute (from `Makefile', line 37):
@@ -253,6 +254,7 @@ so_long:
 	
 
 # files hash-table stats:
+ 
 # Load=8/1024=1%, Rehash=0, Collisions=0/25=0%
 # VPATH Search Paths
 
@@ -265,6 +267,6 @@ so_long:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Mar  7 16:27:26 2022
+# Finished Make data base on Tue Mar  8 11:48:45 2022
 
  

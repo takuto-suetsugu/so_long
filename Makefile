@@ -6,14 +6,14 @@
 #    By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/05 14:06:28 by tsuetsug          #+#    #+#              #
-#    Updated: 2022/03/07 16:27:25 by tsuetsug         ###   ########.fr        #
+#    Updated: 2022/03/08 11:48:29 by tsuetsug         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	= so_long
 
-SRCS	= srcs/so_long.c srcs/ft_mlx.c srcs/import_file.c srcs/so_long_utils.c \
+SRCS	= srcs/so_long.c srcs/import_file.c srcs/so_long_utils.c \
 			srcs/import_file_error.c srcs/key_control.c
 
 OBJ		= *.o
