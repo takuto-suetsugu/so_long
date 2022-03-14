@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/30 22:11:06 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/12 14:20:42 by tsuetsug         ###   ########.fr       */
+/*   Created: 2022/03/12 14:17:13 by tsuetsug          #+#    #+#             */
+/*   Updated: 2022/03/12 14:17:19 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../ft_printf.h"
 
-void	ft_putstr_fd(char *s, int fd)
-{
-	write(fd, s, ft_strlen(s));
+int	ft_putchar(char c)
+{	
+	return (write(1, &c, 1));
 }

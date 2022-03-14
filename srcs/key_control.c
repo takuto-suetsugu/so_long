@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:26:13 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/08 11:46:24 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/12 14:29:53 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*search_element_addr(t_game *game, char element)
 		}
 		x = -1;
 	}
-	ft_error("There is no element!");
+	ft_error("There is no element!", game);
 	return (NULL);
 }
 
@@ -51,7 +51,7 @@ void	move_player(t_game *game)
 	next_y = game->map.player_y + game->move_y;
 	if (game->map.content[next_y][next_x] == '1')
 		return ;
-	printf("move_count:%d\n", ++game->move_count);
+	ft_printf("move_count:%d\n", ++game->move_count);
 	game->map.content[game->map.player_y][game->map.player_x] = '0';
 	if (game->map.content[next_y][next_x] == 'E')
 	{

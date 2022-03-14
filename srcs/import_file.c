@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/08 11:33:02 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/12 16:37:11 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void	read_file(char *file_name, t_game *game)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
-		ft_error("File open error");
+		ft_error("File open error", game);
 	rc = read(fd, buff, 2048);
 	if (rc == -1)
-		ft_error("File read error");
+		ft_error("File read error", game);
 	else if (rc == 0)
-		ft_error("No content");
+		ft_error("No content", game);
 	else
 		buff[rc] = '\0';
 	close(fd);
@@ -50,14 +50,14 @@ void	sizeof_col_row(t_game *game)
 			i++;
 		}
 		if (prev_col && (game->map.col != prev_col))
-			ft_error("Col length is not same, map is not rectangular");
+			ft_error("Col length is not same, map is not rectangular", game);
 		prev_col = game->map.col;
 		i++;
 		game->map.row++;
 	}
 	if ((game->map.col < 3 && game->map.row < 5)
 		|| (game->map.col < 5 && game->map.row < 3))
-		ft_error("Map is too small");
+		ft_error("Map is too small", game);
 }
 
 void	convert_map_2D_array(t_game *game)
@@ -67,14 +67,14 @@ void	convert_map_2D_array(t_game *game)
 
 	game->map.content = malloc(sizeof(char *) * (game->map.row));
 	if (!game->map.content)
-		ft_error("Map is not allocated");
+		ft_error("Map is not allocated", game);
 	i = 0;
 	k = 0;
 	while (i < game->map.row)
 	{
 		game->map.content[i] = malloc(sizeof(char) * (game->map.col + 1));
 		if (!game->map.content[i])
-			ft_error("Map content is not allocated");
+			ft_error("Map content is not allocated", game);
 		ft_strlcpy(game->map.content[i], &game->map.str[k], game->map.col + 1);
 		i++;
 		k = k + game->map.col + 1;
@@ -103,12 +103,12 @@ void	save_player_start_position(t_game *game)
 		x = 0;
 		y++;
 	}
-	ft_error("There is no P!");
+	ft_error("There is no P!", game);
 }
 
 void	import_map(char *file_name, t_game *game)
 {
-	validate_file_name(file_name);
+	validate_file_name(file_name, game);
 	read_file(file_name, game);
 	sizeof_col_row(game);
 	convert_map_2D_array(game);

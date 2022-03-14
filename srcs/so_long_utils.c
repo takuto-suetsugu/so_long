@@ -6,7 +6,7 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:24:55 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/08 13:45:03 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/12 16:41:24 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	ft_error(char *error_message)
+void	ft_error(char *error_message, t_game *game)
 {
-	printf("Error: %s\n\n", error_message);
+	ft_printf("Error: %s\n\n", error_message);
+	destroy_window(game);
 	exit(1);
 }
 
@@ -43,16 +44,4 @@ void	download_images(t_game *game)
 			"images/blackhole.xpm", &width, &height);
 	game->img.height = height;
 	game->img.width = width;
-}
-
-void	free_map(t_game *game)
-{
-	
-}
-
-int	destroy_window(t_game *game)
-{
-	free_map(game);
-	mlx_destroy_window(game->mlx, game->win);
-	exit(0);
 }

@@ -6,11 +6,13 @@
 /*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/05 14:02:23 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/08 13:31:32 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:25:53 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+#include <libc.h>
 
 #define X_EVENT_KEY_EXIT		17
 
@@ -25,7 +27,8 @@ void	print_map(t_game *game)
 	int	x;
 	int	y;
 
-	x = -1;
+	x = -0;
+	x--;
 	y = -1;
 	while (++y < game->map.row)
 	{
@@ -42,7 +45,7 @@ void	print_map(t_game *game)
 			else if (game->map.content[y][x] == 'E')
 				put_image_to_window(game, x, y, game->img.earth);
 			else
-				ft_error("There is an unspecified character");
+				ft_error("There is an unspecified character", game);
 		}
 		x = -1;
 	}
@@ -52,10 +55,12 @@ void	game_init(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (game->mlx == NULL)
-		ft_error("mlx is not valid");
+		ft_error("mlx is not valid", game);
 	game->move_x = 0;
 	game->move_y = 0;
 	game->move_count = 0;
+	game->map.str = NULL;
+	game->map.content = NULL;
 }
 
 int	main_loop(t_game *game)
@@ -69,11 +74,11 @@ int	main(int argc, char **argv)
 {	
 	t_game			game;
 
-	if (argc != 2)
-		ft_error("argc is not 2");
 	game_init(&game);
 	game.win = mlx_new_window(game.mlx, 2300, 400, "so_long");
 	download_images(&game);
+	if (argc != 2)
+		ft_error("argc is not 2", &game);
 	import_map(argv[1], &game);
 	mlx_loop_hook(game.mlx, &main_loop, &game);
 	mlx_hook(game.win, X_EVENT_KEY_EXIT, 0, &destroy_window, &game);
