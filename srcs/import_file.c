@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   import_file.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:25:50 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/12 16:37:11 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:10:18 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	read_file(char *file_name, t_game *game)
 {
 	int		fd;
-	char	buff[2048 + 1];
+	char	buff[32767];
 	int		rc;
 
 	fd = open(file_name, O_RDONLY);
 	if (fd == -1)
 		ft_error("File open error", game);
-	rc = read(fd, buff, 2048);
+	rc = read(fd, buff, 32766);
 	if (rc == -1)
 		ft_error("File read error", game);
 	else if (rc == 0)

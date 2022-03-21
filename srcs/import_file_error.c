@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   import_file_error.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/17 12:27:09 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/12 14:41:48 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/17 21:44:38 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 void	validate_file_name(char *file_name, t_game *game)
 {
-	while ((*file_name) && (*file_name != '.'))
+	if (ft_strncmp(file_name, ".ber\0", 5) == 0)
+		ft_error("File type is only .ber", game);
+	while (*file_name)
+	{
+		if ((*file_name == '/') && ft_strncmp(file_name, "/.ber\0", 6) == 0)
+			ft_error("File type is only .ber", game);
+		else if ((*file_name == '.') && ft_strncmp(file_name, ".ber\0", 5) != 0)
+			ft_error("File type is not .ber", game);
 		file_name++;
-	if (ft_strncmp(file_name, ".ber\0", 5) != 0)
-		ft_error("File type is not .ber", game);
+	}
 }
 
 void	validate_wall(t_game *game)

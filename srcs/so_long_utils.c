@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:24:55 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/12 16:41:24 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:05:43 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	ft_error(char *error_message, t_game *game)
 {
-	ft_printf("Error: %s\n\n", error_message);
+	ft_printf("Error\n%s\n", error_message);
 	destroy_window(game);
 	exit(1);
 }

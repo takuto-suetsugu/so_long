@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_control.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 16:26:13 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/12 14:29:53 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:00:35 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ void	move_player(t_game *game)
 	next_y = game->map.player_y + game->move_y;
 	if (game->map.content[next_y][next_x] == '1')
 		return ;
+	if (game->map.content[next_y][next_x] == 'E'
+			&& count_map_components('C', game) != 0)
+		return ;
 	ft_printf("move_count:%d\n", ++game->move_count);
 	game->map.content[game->map.player_y][game->map.player_x] = '0';
 	if (game->map.content[next_y][next_x] == 'E')
 	{
-		game->map.content[next_y][next_x] = 'P';
-		destroy_window(game);
+			game->map.content[next_y][next_x] = 'P';
+			destroy_window(game);
 	}
 	else
 		game->map.content[next_y][next_x] = 'P';

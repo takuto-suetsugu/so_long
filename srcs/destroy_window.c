@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   destroy_window.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/12 13:51:46 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/12 16:56:07 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/17 17:05:00 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,15 @@ void	free_map(t_game *game)
 
 int	destroy_window(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->img.background);
-	mlx_destroy_image(game->mlx, game->img.blackhole);
-	mlx_destroy_image(game->mlx, game->img.planet);
-	mlx_destroy_image(game->mlx, game->img.astronaut);
-	mlx_destroy_image(game->mlx, game->img.earth);
-	mlx_destroy_window(game->mlx, game->win);
+	if (game->win != NULL)
+	{
+		mlx_destroy_image(game->mlx, game->img.background);
+		mlx_destroy_image(game->mlx, game->img.blackhole);
+		mlx_destroy_image(game->mlx, game->img.planet);
+		mlx_destroy_image(game->mlx, game->img.astronaut);
+		mlx_destroy_image(game->mlx, game->img.earth);
+		mlx_destroy_window(game->mlx, game->win);
+	}
 	if (game->map.str != NULL)
 		safe_free(&game->map.str);
 	if (game->map.content != NULL)

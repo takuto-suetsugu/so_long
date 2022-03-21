@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tsuetsug <tsuetsug@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tsuetsug < tsuetsug@student.42tokyo.jp>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 12:52:09 by tsuetsug          #+#    #+#             */
-/*   Updated: 2022/03/12 14:30:25 by tsuetsug         ###   ########.fr       */
+/*   Updated: 2022/03/17 22:01:15 by tsuetsug         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include   <fcntl.h>
 # include "../libft/libft.h"
 # include "../ft_printf/ft_printf.h"
-# include "../minilibx_mms_20200219/mlx.h"
+# include "../minilibx/mlx.h"
 
 typedef struct s_data {
 	void	*astronaut;
@@ -72,6 +72,7 @@ void	sizeof_col_row(t_game *game);
 void	validate_file_name(char *file_name, t_game *game);
 void	validate_wall(t_game *game);
 void	validate_map_components(t_game *game);
+int		count_map_components(char map_components, t_game *game);
 
 /* key_control.c */
 char	*search_element_addr(t_game *game, char element);
